@@ -54,7 +54,7 @@ class CopyArtifactPlugin {
     fs.ensureDirSync(copyDir);
     fs.copySync(
       `${slsDir}/cloudformation-template-update-stack.json`,
-      `${copyDir}/cloudformation-template-upate-stack.json`
+      `${copyDir}/cloudformation-template-update-stack.json`
     );
     
     this.serverless.cli.log(`artifact copied to ${copyDir}`, 'CopyArtifactPlugin');
