@@ -1,0 +1,9 @@
+{
+  "name": "@incdevco/serverless-plugin-copy-artifact",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^9.1.0"
+  }
+}
