@@ -43,15 +43,15 @@ class CopyArtifactPlugin {
     const artifactDir = `${homeDir}/${service.package.artifactDirectoryName}`;
     const copyDir = `${homeDir}/serverless/${service.service}/${service.provider.stage}`;
     
-    // console.log('homeDir', homeDir);
-    // console.log('artifactDir', artifactDir);
-    // console.log('copyDir', copyDir);
-    // console.log('slsDir', slsDir);
+    //console.log('homeDir', homeDir);
+    //console.log('artifactDir', artifactDir);
+    //console.log('copyDir', copyDir);
+    //console.log('slsDir', slsDir);
     
+    fs.emptyDirSync(copyDir);
     fs.ensureDirSync(artifactDir);
     fs.copySync(slsDir, artifactDir);
     
-    fs.ensureDirSync(copyDir);
     fs.copySync(
       `${slsDir}/cloudformation-template-update-stack.json`,
       `${copyDir}/cloudformation-template-update-stack.json`
