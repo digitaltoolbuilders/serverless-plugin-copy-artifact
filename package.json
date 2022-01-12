@@ -1,11 +1,11 @@
 {
-  "name": "@jaggedrockdev/serverless-plugin-copy-artifact",
-  "version": "1.0.2",
+  "name": "@digitaltoolbuilders/serverless-plugin-copy-artifact",
+  "version": "1.1.0",
   "main": "index.js",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaggedrockdev/serverless-plugin-copy-artifact.git"
+    "url": "https://github.com/digitaltoolbuilders/serverless-plugin-copy-artifact.git"
   },
   "license": "MIT",
   "dependencies": {
