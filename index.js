@@ -30,10 +30,8 @@ class CopyArtifactPlugin {
       
     }
     
-    this.serverless.cli.log('copying artifact', 'CopyArtifactPlugin');
-    
     const serviceDir = this.serverless.config.servicePath;
-    const slsDir = `${serviceDir}/.serverless`;
+    const slsDir = this.options.package || `${serviceDir}/.serverless`;
     
     const homeDir = serviceDir.replace(
       new RegExp(`/${copyArtifact.pathToMain}$`), 
@@ -41,12 +39,19 @@ class CopyArtifactPlugin {
     );
     
     const artifactDir = `${homeDir}/${service.package.artifactDirectoryName}`;
-    const copyDir = `${homeDir}/serverless/${service.service}/${service.provider.stage}`;
+    let copyDir = `${homeDir}/serverless/${service.service}/${service.provider.stage}`;
     
-    //console.log('homeDir', homeDir);
-    //console.log('artifactDir', artifactDir);
-    //console.log('copyDir', copyDir);
-    //console.log('slsDir', slsDir);
+    if (copyArtifact.includeRegion) {
+
+      copyDir += `/${service.provider.region}`;
+
+    }
+
+    // console.log('options', this.options);
+    // console.log('homeDir', homeDir);
+    // console.log('artifactDir', artifactDir);
+    // console.log('copyDir', copyDir);
+    // console.log('slsDir', slsDir);
     
     fs.emptyDirSync(copyDir);
     fs.ensureDirSync(artifactDir);

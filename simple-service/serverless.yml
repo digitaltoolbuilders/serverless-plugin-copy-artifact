@@ -25,6 +25,7 @@ plugins:
 
 custom:
   copyArtifact:
+    includeRegion: true
     pathToMain: simple-service
 
 provider:
