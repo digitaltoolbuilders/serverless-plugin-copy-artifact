@@ -21,6 +21,14 @@ class CopyArtifactPlugin {
     const service = this.serverless.service;
     
     const copyArtifact = service.custom.copyArtifact;
+
+    if (!copyArtifact) {
+
+      this.serverless.cli.log('no config found', 'copy-artifact');
+
+      return true;
+
+    }
     
     if (copyArtifact.disabled) {
       
@@ -39,14 +47,10 @@ class CopyArtifactPlugin {
     );
     
     const artifactDir = `${homeDir}/${service.package.artifactDirectoryName}`;
-    let copyDir = `${homeDir}/serverless/${service.service}/${service.provider.stage}`;
+    const artDirParts = artifactDir.split(service.service);
+    let copyDir = `${artDirParts[0]}${service.service}/${service.provider.stage}`;
     
-    if (copyArtifact.includeRegion) {
-
-      copyDir += `/${service.provider.region}`;
-
-    }
-
+    // console.log('service', service);
     // console.log('options', this.options);
     // console.log('homeDir', homeDir);
     // console.log('artifactDir', artifactDir);

@@ -18,7 +18,7 @@ service: simple-service
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 plugins:
   - '@digitaltoolbuilders/serverless-plugin-copy-artifact'
@@ -29,7 +29,9 @@ custom:
     pathToMain: simple-service
 
 provider:
+#  deploymentPrefix: serverless/${self:provider.region}
   name: aws
+  region: ${opt:region, 'us-west-2'}
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
 
@@ -60,10 +62,10 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  patterns:
+package:
+  patterns:
 #    - '!exclude-me.js'
-#    - '!exclude-me-dir/**'
+    - '!node_modules/**'
 #    - include-me.js
 #    - include-me-dir/**
 
